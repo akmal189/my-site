@@ -1,0 +1,120 @@
+@use '../base' as *;
+
+.block-padding {
+    padding: 0 20px;
+}
+
+.block-width {
+    max-width: 1800px;
+    width: 100%;
+    margin: 0 auto;
+}
+
+.primary-button-icon {
+    border-radius: 250px;
+    padding: 23px 28px 23px 40px;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: var(--primary);
+    transition: all 0.3s ease;
+    font-family: var(--font-family);
+    font-weight: 600;
+    font-size: 15px;
+    line-height: 108%;
+    text-align: center;
+    color: var(--primon);
+
+    &:hover {
+        background: color-mix(in srgb, var(--primary) 90%, white 20%);
+    }
+}
+
+.svg-icon {
+    width: 20px;
+    height: 20px;
+}
+
+.site-pretitle {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-family: var(--font-family);
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 128%;
+    color: var(--dark-tipon);
+
+    .arrow {
+        font-size: 0;
+        line-height: normal;
+        color: var(--primary);
+
+        .svg-icon {
+            width: 12px;
+        }
+    }
+}
+
+.block-title {
+    font-family: var(--font-family);
+    font-weight: 700;
+    font-size: 52px;
+    line-height: 105%;
+    color: var(--dark-tipon);
+}
+
+.swiper-pagination {
+    position: static;
+    margin-top: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 7px;
+
+    .swiper-pagination-bullet {
+        width: 8px;
+        height: 8px;
+        border-radius: 100%;
+        margin: 0 !important;
+        transition: all 0.3s ease;
+        background: var(--light-bgon);
+        opacity: 0.1;
+
+        &:hover, &-active {
+            opacity: 1;
+            background: var(--primary);
+        }
+    }
+}
+
+.swiper-button-prev, .swiper-button-next {
+    position: static;
+    width: 50px;
+    height: 50px;
+    border-radius: 100%;
+    background: var(--accent);
+    margin: 0;
+    opacity: 1;
+
+    &.swiper-button-disabled {
+        opacity: 1;
+        opacity: 0.2;
+    }
+
+    &:after {
+        display: none;
+    }
+
+    .svg-icon {
+        width: 25px;
+        height: 25px;
+        color: #fff;
+    }
+    
+}
+
+.swiper-button-prev {
+    transform: rotate(180deg);
+}

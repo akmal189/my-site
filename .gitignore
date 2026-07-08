@@ -1,0 +1,12 @@
+node_modules/
+.DS_Store
+
+# Логи
+npm-debug.log*
+
+# IDE
+.vscode/
+.idea/
+
+# Системные файлы
+Thumbs.db
