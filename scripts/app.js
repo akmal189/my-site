@@ -1,4 +1,29 @@
 document.addEventListener('DOMContentLoaded', function(){
+    const lenis = new Lenis({
+        // параметры настройки
+        lerp: 0.08, // коэффициент сглаживания (0 - 1)
+        smooth: true, // включить плавный скролл
+        direction: 'vertical', // направление скролла (vertical or horizontal)
+        smoothWheel: true, // плавный скролл колесом мыши
+        smoothTouch: false, // плавный скролл при касании (mobile)
+        infinite: false // бесконечный скролл
+    })
+
+    window.addEventListener('load', () => {
+		// запуск анимации скролла
+		function raf(time) {
+			lenis.raf(time);
+			requestAnimationFrame(raf);
+		}
+
+		requestAnimationFrame(raf);
+
+		requestAnimationFrame(() => {
+			let height = document.body.scrollHeight;
+			document.body.style.height = height + 'px';
+		});
+	})
+    
     const servicesSlider = new Swiper ('.services-block__list .swiper', {
         slidesPerView: 4,
         spaceBetween: 12,
@@ -30,4 +55,67 @@ document.addEventListener('DOMContentLoaded', function(){
             }
         }
     });
+
+    function tickerBlock() {
+        const wrap = document.querySelector('.ticker-block__inner');
+        const ticker = document.querySelector('.ticker-block');
+        const originalItems = Array.from(wrap.children);
+
+        const originalWidth = wrap.scrollWidth; // ширина одного набора
+        const tickerWidth = ticker.offsetWidth;
+
+        // сколько наборов нужно, чтобы покрыть 2x ширины контейнера + запас
+        const setsNeeded = Math.max(2, Math.ceil((tickerWidth * 2) / originalWidth) + 1);
+
+        const fragment = document.createDocumentFragment();
+        for (let i = 0; i < setsNeeded - 1; i++) {
+            originalItems.forEach(el => fragment.appendChild(el.cloneNode(true)));
+        }
+        wrap.appendChild(fragment); // один reflow вместо множества
+
+        const width = originalWidth; // ширина одного цикла для зацикливания
+
+        let rafId = null;
+        let position = 0;
+        let lastTime = null;
+        const speedPxPerSec = 58;
+
+        wrap.style.willChange = 'transform';
+        wrap.style.transform = 'translate3d(0, 0, 0)';
+
+        function animate(timestamp) {
+            if (lastTime === null) lastTime = timestamp;
+            const delta = timestamp - lastTime;
+            lastTime = timestamp;
+
+            position += (speedPxPerSec * delta) / 1000;
+            if (position >= width) position -= width;
+
+            wrap.style.transform = `translate3d(${-position}px, 0, 0)`;
+            rafId = requestAnimationFrame(animate);
+        }
+
+        function start() {
+            if (rafId === null) {
+                lastTime = null;
+                rafId = requestAnimationFrame(animate);
+            }
+        }
+
+        function stop() {
+            if (rafId !== null) {
+                cancelAnimationFrame(rafId);
+                rafId = null;
+            }
+        }
+
+        ticker.addEventListener('mouseenter', stop);
+        ticker.addEventListener('mouseleave', start);
+
+        start();
+    }
+
+    if(document.querySelector('.ticker-block')) {
+        tickerBlock();
+    }
 })

@@ -10,6 +10,8 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:ital,wght@0,100..900;1,100..900&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Manrope:wght@200..800&family=Onest:wght@100..900&family=Rubik:ital,wght@0,300..900;1,300..900&family=Sofia+Sans+Extra+Condensed:ital,wght@0,1..1000;1,1..1000&display=swap" rel="stylesheet">
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    <link href="https://cdn.jsdelivr.net/npm/lenis@1.3.25/dist/lenis.min.css" rel="stylesheet">
+    
     <link rel="stylesheet" href="css/styles.min.css">
 </head>
 <body>
@@ -129,481 +131,482 @@
             </div>
         </header>
 
-        <section class="hero-section block-padding">
-            <div class="hero-section__inner block-width">
-                <div class="hero-section__bg">
-                    <video autobuffer autoplay muted height="auto" loop playsinline preload="metadata" src="video/sphere-anim-final.mp4" width="100%" loading="lazy">&nbsp;</video>
+    <section class="hero-section block-padding">
+        <div class="hero-section__inner block-width">
+            <div class="hero-section__bg">
+                <video autobuffer autoplay muted height="auto" loop playsinline preload="metadata" src="video/sphere-anim-final.mp4" width="100%" loading="lazy">&nbsp;</video>
+            </div>
+            <div class="hero-section__body">
+                <div class="hero-section__label">
+                    <div class="hero-section__label-icon">
+                        <svg class="svg-icon">
+                            <use xlink:href="images/sprite.svg#verified"></use>
+                        </svg>
+                    </div>
+                    <div class="hero-section__label-text">85% клиентов приходят по рекомендации</div>
                 </div>
-                <div class="hero-section__body">
-                    <div class="hero-section__label">
-                        <div class="hero-section__label-icon">
+
+                <div class="hero-section__title">
+                    <h1>Разработка сайтов и Telegram-ботов под ключ</h1>
+                </div>
+
+                <div class="hero-section__desc">
+                    Создаем современные и функциональные сайты и Telegram-боты, которые помогут вам достичь ваших бизнес-целей
+                </div>
+
+                <div class="hero-section__btn">
+                    <a href="#" class="primary-button-icon">
+                        <span class="hero-section__btn-text">Смотреть каталог</span>
+                        <span class="hero-section__btn-icon">
                             <svg class="svg-icon">
-                                <use xlink:href="images/sprite.svg#verified"></use>
+                                <use xlink:href="images/sprite.svg#chevron-right"></use>
                             </svg>
+                        </span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="portfolio-block block-padding">
+        <div class="portfolio-block__inner block-width">
+            <div class="portfolio-block__pretitle site-pretitle">
+                <div class="arrow">
+                    <svg class="svg-icon">
+                        <use xlink:href="images/sprite.svg#left-arrow"></use>
+                    </svg>
+                </div>
+                <div class="text">Портфолио</div>
+                <div class="arrow">
+                    <svg class="svg-icon">
+                        <use xlink:href="images/sprite.svg#right-arrow"></use>
+                    </svg>
+                </div>
+            </div>
+            <div class="portfolio-block__title block-title">Некоторые из готовых проектов в портфолио</div>
+            <div class="portfolio-block__list">
+                <div class="portfolio-block__item">
+                    <a href="https://namgar.mn/"></a>
+                    <div class="portfolio-block__item-labels">
+                        <div class="portfolio-block__item-label">Бизнес-сайт</div>
+                        <div class="portfolio-block__item-label">2026</div>
+                    </div>
+                    <div class="portfolio-block__item-image">
+                        <div class="image-inner">
+                            <img src="images/namgar-screen.png" alt="namgar-screen" loading="lazy">
                         </div>
-                        <div class="hero-section__label-text">85% клиентов приходят по рекомендации</div>
                     </div>
-
-                    <div class="hero-section__title">
-                        <h1>Разработка сайтов и Telegram-ботов под ключ</h1>
+                    <div class="portfolio-block__item-bottom">
+                        <div class="portfolio-block__item-title">namgar.mn</div>
+                        <div class="portfolio-block__item-desc">Сайт для музыкальной группы из Монголии</div>
                     </div>
+                </div>
 
-                    <div class="hero-section__desc">
-                        Создаем современные и функциональные сайты и Telegram-боты, которые помогут вам достичь ваших бизнес-целей
+                <div class="portfolio-block__item">
+                    <a href="https://exkavator.uz/"></a>
+                    <div class="portfolio-block__item-labels">
+                        <div class="portfolio-block__item-label">Бизнес-сайт</div>
+                        <div class="portfolio-block__item-label">2023</div>
                     </div>
+                    <div class="portfolio-block__item-image">
+                        <div class="image-inner">
+                            <img src="images/ecopark-image.png" alt="ecopark-image" loading="lazy">
+                        </div>
+                    </div>
+                    <div class="portfolio-block__item-bottom">
+                        <div class="portfolio-block__item-title">Ecopark</div>
+                        <div class="portfolio-block__item-desc">Сайт по ремонту и аренде спецтехники</div>
+                    </div>
+                </div>
 
-                    <div class="hero-section__btn">
-                        <a href="#" class="primary-button-icon">
-                            <span class="hero-section__btn-text">Смотреть каталог</span>
-                            <span class="hero-section__btn-icon">
+                <div class="portfolio-block__item">
+                    <a href="https://cafestudio.pl/"></a>
+                    <div class="portfolio-block__item-labels">
+                        <div class="portfolio-block__item-label">Бизнес-сайт</div>
+                        <div class="portfolio-block__item-label">2026</div>
+                    </div>
+                    <div class="portfolio-block__item-image">
+                        <div class="image-inner">
+                            <img src="images/cafestudio-screen.png" alt="cafestudio-screen" loading="lazy">
+                        </div>
+                    </div>
+                    <div class="portfolio-block__item-bottom">
+                        <div class="portfolio-block__item-title">Cafestudio</div>
+                        <div class="portfolio-block__item-desc">Сайт-портфолио</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="services-block block-padding">
+        <div class="services-block__inner block-width">
+            <div class="services-block__pretitle site-pretitle">
+                <div class="arrow">
+                    <svg class="svg-icon">
+                        <use xlink:href="images/sprite.svg#left-arrow"></use>
+                    </svg>
+                </div>
+                <div class="text">Что мы предлагаем</div>
+                <div class="arrow">
+                    <svg class="svg-icon">
+                        <use xlink:href="images/sprite.svg#right-arrow"></use>
+                    </svg>
+                </div>
+            </div>
+            <div class="services-block__header">
+                <div class="services-block__title block-title">Достигайте своих бизнес целей, используя наш опыт <br>и компетенции</div>
+                <div class="services-block__desc">Поможем построить прочный технологический фундамент <br>и стать лидером в своей отрасли</div>
+                <div class="services-block__controls">
+                    <div class="swiper-button-prev">
+                        <svg class="svg-icon">
+                            <use xlink:href="images/sprite.svg#chevron-right"></use>
+                        </svg>
+                    </div>
+                    <div class="swiper-button-next">
+                        <svg class="svg-icon">
+                            <use xlink:href="images/sprite.svg#chevron-right"></use>
+                        </svg>
+                    </div>
+                </div>
+            </div>
+
+            <div class="services-block__list">
+                <div class="swiper">
+                    <div class="swiper-wrapper">
+                        <div class="services-block__item swiper-slide">
+                            <div class="services-block__item-title">Сайт-визитка</div>
+                            <div class="services-block__item-desc">Создание продающих одностраничных сайтов с продуманной структурой, дизайном и высокой конверсией под конкретную задачу бизнеса.</div>
+                            <div class="services-block__item-prices">
+                                <div class="services-block__item-price">
+                                    <div class="desc">Стоимость</div>
+                                    <div class="title">от 100$</div>
+                                </div>
+                                <div class="services-block__item-srok">
+                                    <div class="desc">Сроки</div>
+                                    <div class="title">от 5 дней</div>
+                                </div>
+                            </div>
+                            <div class="services-block__item-btn">
+                                <a href="javascript:void(0);">
+                                    <div class="text">Обсудить проект</div>
+                                    <div class="icon">
+                                        <svg class="svg-icon">
+                                            <use xlink:href="images/sprite.svg#chat"></use>
+                                        </svg>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                        
+                        <div class="services-block__item swiper-slide">
+                            <div class="services-block__item-title">Бизнес-каталог</div>
+                            <div class="services-block__item-desc">Создание сайтов-каталогов с продуманной навигацией, фильтрацией и удобной презентацией товаров или услуг без функции оплаты.</div>
+                            <div class="services-block__item-prices">
+                                <div class="services-block__item-price">
+                                    <div class="desc">Стоимость</div>
+                                    <div class="title">от 150$</div>
+                                </div>
+                                <div class="services-block__item-srok">
+                                    <div class="desc">Сроки</div>
+                                    <div class="title">от 7 дней</div>
+                                </div>
+                            </div>
+                            <div class="services-block__item-btn">
+                                <a href="javascript:void(0);">
+                                    <div class="text">Обсудить проект</div>
+                                    <div class="icon">
+                                        <svg class="svg-icon">
+                                            <use xlink:href="images/sprite.svg#chat"></use>
+                                        </svg>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+
+                        <div class="services-block__item swiper-slide">
+                            <div class="services-block__item-title">Интернет-магазин</div>
+                            <div class="services-block__item-desc">Разработка полноценных e-commerce решений с удобным каталогом, корзиной, оплатой и интеграциями для эффективных онлайн-продаж.</div>
+                            <div class="services-block__item-prices">
+                                <div class="services-block__item-price">
+                                    <div class="desc">Стоимость</div>
+                                    <div class="title">от 250$</div>
+                                </div>
+                                <div class="services-block__item-srok">
+                                    <div class="desc">Сроки</div>
+                                    <div class="title">от 10 дней</div>
+                                </div>
+                            </div>
+                            <div class="services-block__item-btn">
+                                <a href="javascript:void(0);">
+                                    <div class="text">Обсудить проект</div>
+                                    <div class="icon">
+                                        <svg class="svg-icon">
+                                            <use xlink:href="images/sprite.svg#chat"></use>
+                                        </svg>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+
+                        <div class="services-block__item swiper-slide">
+                            <div class="services-block__item-title">Telegram-бот</div>
+                            <div class="services-block__item-desc">Разработка автоматизированных ботов для бизнеса: прием заказов, записи, уведомления, интеграции с CRM и другими сервисами.</div>
+                            <div class="services-block__item-prices">
+                                <div class="services-block__item-price">
+                                    <div class="desc">Стоимость</div>
+                                    <div class="title">от 50$</div>
+                                </div>
+                                <div class="services-block__item-srok">
+                                    <div class="desc">Сроки</div>
+                                    <div class="title">от 3 дней</div>
+                                </div>
+                            </div>
+                            <div class="services-block__item-btn">
+                                <a href="javascript:void(0);">
+                                    <div class="text">Обсудить проект</div>
+                                    <div class="icon">
+                                        <svg class="svg-icon">
+                                            <use xlink:href="images/sprite.svg#chat"></use>
+                                        </svg>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+
+                        <div class="services-block__item swiper-slide">
+                            <div class="services-block__item-title">Дизайн интерфейсов</div>
+                            <div class="services-block__item-desc">Современный UI-дизайн с акцентом на удобство, понятную навигацию и внимание к деталям. Интерфейсы, которые выглядят стильно и работают эффективно.</div>
+                            <div class="services-block__item-prices">
+                                <div class="services-block__item-price">
+                                    <div class="desc">Стоимость</div>
+                                    <div class="title">от 50$</div>
+                                </div>
+                                <div class="services-block__item-srok">
+                                    <div class="desc">Сроки</div>
+                                    <div class="title">от 3 дней</div>
+                                </div>
+                            </div>
+                            <div class="services-block__item-btn">
+                                <a href="javascript:void(0);">
+                                    <div class="text">Обсудить проект</div>
+                                    <div class="icon">
+                                        <svg class="svg-icon">
+                                            <use xlink:href="images/sprite.svg#chat"></use>
+                                        </svg>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+
+                        <div class="services-block__item swiper-slide">
+                            <div class="services-block__item-title">Электронные пригласительные</div>
+                            <div class="services-block__item-desc">Создание стильных и интерактивных онлайн-приглашений для мероприятий с адаптацией под мобильные устройства.</div>
+                            <div class="services-block__item-prices">
+                                <div class="services-block__item-price">
+                                    <div class="desc">Стоимость</div>
+                                    <div class="title">от 50$</div>
+                                </div>
+                                <div class="services-block__item-srok">
+                                    <div class="desc">Сроки</div>
+                                    <div class="title">от 3 дней</div>
+                                </div>
+                            </div>
+                            <div class="services-block__item-btn">
+                                <a href="javascript:void(0);">
+                                    <div class="text">Обсудить проект</div>
+                                    <div class="icon">
+                                        <svg class="svg-icon">
+                                            <use xlink:href="images/sprite.svg#chat"></use>
+                                        </svg>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+
+                        <div class="services-block__item swiper-slide">
+                            <div class="services-block__item-title">Поддержка и доработка</div>
+                            <div class="services-block__item-desc">Техническое сопровождение сайтов: исправление ошибок, улучшение функционала, оптимизация скорости и обновление контента.</div>
+                            <div class="services-block__item-prices">
+                                <div class="services-block__item-price">
+                                    <div class="desc">Стоимость</div>
+                                    <div class="title">от 10$</div>
+                                </div>
+                                <div class="services-block__item-srok">
+                                    <div class="desc">Сроки</div>
+                                    <div class="title">от 1 дня</div>
+                                </div>
+                            </div>
+                            <div class="services-block__item-btn">
+                                <a href="javascript:void(0);">
+                                    <div class="text">Обсудить проект</div>
+                                    <div class="icon">
+                                        <svg class="svg-icon">
+                                            <use xlink:href="images/sprite.svg#chat"></use>
+                                        </svg>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="services-block__pagination swiper-pagination"></div>
+        </div>
+    </section>
+
+    <section class="advantages-block block-padding">
+        <div class="advantages-block__inner block-width">
+            <div class="advantages-block__left">
+                <div class="advantages-block__pretitle site-pretitle">
+                    <div class="arrow">
+                        <svg class="svg-icon">
+                            <use xlink:href="images/sprite.svg#left-arrow"></use>
+                        </svg>
+                    </div>
+                    <div class="text">Преимущества</div>
+                    <div class="arrow">
+                        <svg class="svg-icon">
+                            <use xlink:href="images/sprite.svg#right-arrow"></use>
+                        </svg>
+                    </div>
+                </div>
+                <div class="advantages-block__title block-title">Нам важно выстроить спокойное и комфортное сотрудничество</div>
+                <div class="advantages-block__image">
+                    <img src="images/advantages-image.png" alt="advantages-image">
+                </div>
+            </div>
+            <div class="advantages-block__right">
+                <div class="advantages-block__list">
+                    <div class="advantages-block__item">
+                        <div class="advantages-block__item-number">
+                            <div class="arrow">
                                 <svg class="svg-icon">
-                                    <use xlink:href="images/sprite.svg#chevron-right"></use>
+                                    <use xlink:href="images/sprite.svg#left-arrow"></use>
                                 </svg>
-                            </span>
-                        </a>
+                            </div>
+                            <div class="text">1</div>
+                            <div class="arrow">
+                                <svg class="svg-icon">
+                                    <use xlink:href="images/sprite.svg#right-arrow"></use>
+                                </svg>
+                            </div>
+                        </div>
+                        <div class="advantages-block__item-title">Безопасное сотрудничество</div>
+                        <div class="advantages-block__item-desc">Работаю по договору, где заранее прописаны объём работ, сроки и условия. Это делает процесс прозрачным и предсказуемым</div>
+                    </div>
+
+                    <div class="advantages-block__item">
+                        <div class="advantages-block__item-number">
+                            <div class="arrow">
+                                <svg class="svg-icon">
+                                    <use xlink:href="images/sprite.svg#left-arrow"></use>
+                                </svg>
+                            </div>
+                            <div class="text">2</div>
+                            <div class="arrow">
+                                <svg class="svg-icon">
+                                    <use xlink:href="images/sprite.svg#right-arrow"></use>
+                                </svg>
+                            </div>
+                        </div>
+                        <div class="advantages-block__item-title">Комфортная коммуникация</div>
+                        <div class="advantages-block__item-desc">Я всегда на связи, спокойно обсуждаю идеи и объясняю решения. Работа строится в диалоге, без давления и лишнего стресса</div>
+                    </div>
+
+                    <div class="advantages-block__item">
+                        <div class="advantages-block__item-number">
+                            <div class="arrow">
+                                <svg class="svg-icon">
+                                    <use xlink:href="images/sprite.svg#left-arrow"></use>
+                                </svg>
+                            </div>
+                            <div class="text">3</div>
+                            <div class="arrow">
+                                <svg class="svg-icon">
+                                    <use xlink:href="images/sprite.svg#right-arrow"></use>
+                                </svg>
+                            </div>
+                        </div>
+                        <div class="advantages-block__item-title">Погружение в задачу</div>
+                        <div class="advantages-block__item-desc">Вникаю в проект, цели и контекст, а не просто работаю по ТЗ. Мне важно понять, зачем и для кого делается продукт</div>
+                    </div>
+
+                    <div class="advantages-block__item">
+                        <div class="advantages-block__item-number">
+                            <div class="arrow">
+                                <svg class="svg-icon">
+                                    <use xlink:href="images/sprite.svg#left-arrow"></use>
+                                </svg>
+                            </div>
+                            <div class="text">4</div>
+                            <div class="arrow">
+                                <svg class="svg-icon">
+                                    <use xlink:href="images/sprite.svg#right-arrow"></use>
+                                </svg>
+                            </div>
+                        </div>
+                        <div class="advantages-block__item-title">Понятный процесс работы</div>
+                        <div class="advantages-block__item-desc">Проект делится на этапы, и на каждом из них понятно, что происходит дальше. Вы всегда видите прогресс и знаете, какой следующий шаг</div>
                     </div>
                 </div>
             </div>
-        </section>
+        </div>
+    </section>
 
-        <section class="portfolio-block block-padding">
-            <div class="portfolio-block__inner block-width">
-                <div class="portfolio-block__pretitle site-pretitle">
-                    <div class="arrow">
-                        <svg class="svg-icon">
-                            <use xlink:href="images/sprite.svg#left-arrow"></use>
-                        </svg>
-                    </div>
-                    <div class="text">Портфолио</div>
-                    <div class="arrow">
-                        <svg class="svg-icon">
-                            <use xlink:href="images/sprite.svg#right-arrow"></use>
-                        </svg>
-                    </div>
-                </div>
-                <div class="portfolio-block__title block-title">Некоторые из готовых проектов в портфолио</div>
-                <div class="portfolio-block__list">
-                    <div class="portfolio-block__item">
-                        <a href="https://namgar.mn/"></a>
-                        <div class="portfolio-block__item-labels">
-                            <div class="portfolio-block__item-label">Бизнес-сайт</div>
-                            <div class="portfolio-block__item-label">2026</div>
-                        </div>
-                        <div class="portfolio-block__item-image">
-                            <div class="image-inner">
-                                <img src="images/namgar-screen.png" alt="namgar-screen" loading="lazy">
+    <section class="form-block block-padding">
+        <div class="form-block__inner block-width">
+            <div class="form-block__left">
+                <div class="form-block__title block-title">Остались вопросы <br>или нужна консультация?</div>
+                <div class="form-block__desc">Оставьте заявку и наши менеджеры свяжутся в рабочее время, чтобы ответить на вопросы и уточнить детали</div>
+                <div class="form-block__form">
+                    <form>
+                        <div class="form-item">
+                            <div class="form-item__value">
+                                <input type="text" placeholder="Имя">
                             </div>
                         </div>
-                        <div class="portfolio-block__item-bottom">
-                            <div class="portfolio-block__item-title">namgar.mn</div>
-                            <div class="portfolio-block__item-desc">Сайт для музыкальной группы из Монголии</div>
-                        </div>
-                    </div>
-
-                    <div class="portfolio-block__item">
-                        <a href="https://exkavator.uz/"></a>
-                        <div class="portfolio-block__item-labels">
-                            <div class="portfolio-block__item-label">Бизнес-сайт</div>
-                            <div class="portfolio-block__item-label">2023</div>
-                        </div>
-                        <div class="portfolio-block__item-image">
-                            <div class="image-inner">
-                                <img src="images/ecopark-image.png" alt="ecopark-image" loading="lazy">
+                        <div class="form-item">
+                            <div class="form-item__value">
+                                <input type="text" placeholder="Телефон">
                             </div>
                         </div>
-                        <div class="portfolio-block__item-bottom">
-                            <div class="portfolio-block__item-title">Ecopark</div>
-                            <div class="portfolio-block__item-desc">Сайт по ремонту и аренде спецтехники</div>
-                        </div>
-                    </div>
-
-                    <div class="portfolio-block__item">
-                        <a href="https://cafestudio.pl/"></a>
-                        <div class="portfolio-block__item-labels">
-                            <div class="portfolio-block__item-label">Бизнес-сайт</div>
-                            <div class="portfolio-block__item-label">2026</div>
-                        </div>
-                        <div class="portfolio-block__item-image">
-                            <div class="image-inner">
-                                <img src="images/cafestudio-screen.png" alt="cafestudio-screen" loading="lazy">
+                        <div class="form-item">
+                            <div class="form-item__value">
+                                <input type="text" placeholder="Почта *" required>
                             </div>
                         </div>
-                        <div class="portfolio-block__item-bottom">
-                            <div class="portfolio-block__item-title">Cafestudio</div>
-                            <div class="portfolio-block__item-desc">Сайт-портфолио</div>
+                        <div class="form-item">
+                            <div class="form-item__value">
+                                <label>
+                                    <input type="checkbox" required>
+                                    <span class="checkbox-item"></span>
+                                    <span class="text">Согласен на обработку <a href="#">персональных данных</a> <br>и c <a href="#">политикой обработки персональных данных</a></span>
+                                </label>
+                            </div>
                         </div>
-                    </div>
+                        <div class="form-item item-submit">
+                            <div class="form-item__value">
+                                <button type="submit" class="primary-button-icon">
+                                    <span class="text">Получить консультацию</span>
+                                    <span class="icon">
+                                        <svg class="svg-icon">
+                                            <use xlink:href="images/sprite.svg#chevron-right"></use>
+                                        </svg>
+                                    </span>
+                                </button>
+                            </div>
+                        </div>
+                    </form>
                 </div>
             </div>
-        </section>
-
-        <section class="services-block block-padding">
-            <div class="services-block__inner block-width">
-                <div class="services-block__pretitle site-pretitle">
-                    <div class="arrow">
-                        <svg class="svg-icon">
-                            <use xlink:href="images/sprite.svg#left-arrow"></use>
-                        </svg>
-                    </div>
-                    <div class="text">Что мы предлагаем</div>
-                    <div class="arrow">
-                        <svg class="svg-icon">
-                            <use xlink:href="images/sprite.svg#right-arrow"></use>
-                        </svg>
-                    </div>
-                </div>
-                <div class="services-block__header">
-                    <div class="services-block__title block-title">Достигайте своих бизнес целей, используя наш опыт <br>и компетенции</div>
-                    <div class="services-block__desc">Поможем построить прочный технологический фундамент <br>и стать лидером в своей отрасли</div>
-                    <div class="services-block__controls">
-                        <div class="swiper-button-prev">
-                            <svg class="svg-icon">
-                                <use xlink:href="images/sprite.svg#chevron-right"></use>
-                            </svg>
-                        </div>
-                        <div class="swiper-button-next">
-                            <svg class="svg-icon">
-                                <use xlink:href="images/sprite.svg#chevron-right"></use>
-                            </svg>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="services-block__list">
-                    <div class="swiper">
-                        <div class="swiper-wrapper">
-                            <div class="services-block__item swiper-slide">
-                                <div class="services-block__item-title">Сайт-визитка</div>
-                                <div class="services-block__item-desc">Создание продающих одностраничных сайтов с продуманной структурой, дизайном и высокой конверсией под конкретную задачу бизнеса.</div>
-                                <div class="services-block__item-prices">
-                                    <div class="services-block__item-price">
-                                        <div class="desc">Стоимость</div>
-                                        <div class="title">от 100$</div>
-                                    </div>
-                                    <div class="services-block__item-srok">
-                                        <div class="desc">Сроки</div>
-                                        <div class="title">от 5 дней</div>
-                                    </div>
-                                </div>
-                                <div class="services-block__item-btn">
-                                    <a href="javascript:void(0);">
-                                        <div class="text">Обсудить проект</div>
-                                        <div class="icon">
-                                            <svg class="svg-icon">
-                                                <use xlink:href="images/sprite.svg#chat"></use>
-                                            </svg>
-                                        </div>
-                                    </a>
-                                </div>
-                            </div>
-                            
-                            <div class="services-block__item swiper-slide">
-                                <div class="services-block__item-title">Бизнес-каталог</div>
-                                <div class="services-block__item-desc">Создание сайтов-каталогов с продуманной навигацией, фильтрацией и удобной презентацией товаров или услуг без функции оплаты.</div>
-                                <div class="services-block__item-prices">
-                                    <div class="services-block__item-price">
-                                        <div class="desc">Стоимость</div>
-                                        <div class="title">от 150$</div>
-                                    </div>
-                                    <div class="services-block__item-srok">
-                                        <div class="desc">Сроки</div>
-                                        <div class="title">от 7 дней</div>
-                                    </div>
-                                </div>
-                                <div class="services-block__item-btn">
-                                    <a href="javascript:void(0);">
-                                        <div class="text">Обсудить проект</div>
-                                        <div class="icon">
-                                            <svg class="svg-icon">
-                                                <use xlink:href="images/sprite.svg#chat"></use>
-                                            </svg>
-                                        </div>
-                                    </a>
-                                </div>
-                            </div>
-
-                            <div class="services-block__item swiper-slide">
-                                <div class="services-block__item-title">Интернет-магазин</div>
-                                <div class="services-block__item-desc">Разработка полноценных e-commerce решений с удобным каталогом, корзиной, оплатой и интеграциями для эффективных онлайн-продаж.</div>
-                                <div class="services-block__item-prices">
-                                    <div class="services-block__item-price">
-                                        <div class="desc">Стоимость</div>
-                                        <div class="title">от 250$</div>
-                                    </div>
-                                    <div class="services-block__item-srok">
-                                        <div class="desc">Сроки</div>
-                                        <div class="title">от 10 дней</div>
-                                    </div>
-                                </div>
-                                <div class="services-block__item-btn">
-                                    <a href="javascript:void(0);">
-                                        <div class="text">Обсудить проект</div>
-                                        <div class="icon">
-                                            <svg class="svg-icon">
-                                                <use xlink:href="images/sprite.svg#chat"></use>
-                                            </svg>
-                                        </div>
-                                    </a>
-                                </div>
-                            </div>
-
-                            <div class="services-block__item swiper-slide">
-                                <div class="services-block__item-title">Telegram-бот</div>
-                                <div class="services-block__item-desc">Разработка автоматизированных ботов для бизнеса: прием заказов, записи, уведомления, интеграции с CRM и другими сервисами.</div>
-                                <div class="services-block__item-prices">
-                                    <div class="services-block__item-price">
-                                        <div class="desc">Стоимость</div>
-                                        <div class="title">от 50$</div>
-                                    </div>
-                                    <div class="services-block__item-srok">
-                                        <div class="desc">Сроки</div>
-                                        <div class="title">от 3 дней</div>
-                                    </div>
-                                </div>
-                                <div class="services-block__item-btn">
-                                    <a href="javascript:void(0);">
-                                        <div class="text">Обсудить проект</div>
-                                        <div class="icon">
-                                            <svg class="svg-icon">
-                                                <use xlink:href="images/sprite.svg#chat"></use>
-                                            </svg>
-                                        </div>
-                                    </a>
-                                </div>
-                            </div>
-
-                            <div class="services-block__item swiper-slide">
-                                <div class="services-block__item-title">Дизайн интерфейсов</div>
-                                <div class="services-block__item-desc">Современный UI-дизайн с акцентом на удобство, понятную навигацию и внимание к деталям. Интерфейсы, которые выглядят стильно и работают эффективно.</div>
-                                <div class="services-block__item-prices">
-                                    <div class="services-block__item-price">
-                                        <div class="desc">Стоимость</div>
-                                        <div class="title">от 50$</div>
-                                    </div>
-                                    <div class="services-block__item-srok">
-                                        <div class="desc">Сроки</div>
-                                        <div class="title">от 3 дней</div>
-                                    </div>
-                                </div>
-                                <div class="services-block__item-btn">
-                                    <a href="javascript:void(0);">
-                                        <div class="text">Обсудить проект</div>
-                                        <div class="icon">
-                                            <svg class="svg-icon">
-                                                <use xlink:href="images/sprite.svg#chat"></use>
-                                            </svg>
-                                        </div>
-                                    </a>
-                                </div>
-                            </div>
-
-                            <div class="services-block__item swiper-slide">
-                                <div class="services-block__item-title">Электронные пригласительные</div>
-                                <div class="services-block__item-desc">Создание стильных и интерактивных онлайн-приглашений для мероприятий с адаптацией под мобильные устройства.</div>
-                                <div class="services-block__item-prices">
-                                    <div class="services-block__item-price">
-                                        <div class="desc">Стоимость</div>
-                                        <div class="title">от 50$</div>
-                                    </div>
-                                    <div class="services-block__item-srok">
-                                        <div class="desc">Сроки</div>
-                                        <div class="title">от 3 дней</div>
-                                    </div>
-                                </div>
-                                <div class="services-block__item-btn">
-                                    <a href="javascript:void(0);">
-                                        <div class="text">Обсудить проект</div>
-                                        <div class="icon">
-                                            <svg class="svg-icon">
-                                                <use xlink:href="images/sprite.svg#chat"></use>
-                                            </svg>
-                                        </div>
-                                    </a>
-                                </div>
-                            </div>
-
-                            <div class="services-block__item swiper-slide">
-                                <div class="services-block__item-title">Поддержка и доработка</div>
-                                <div class="services-block__item-desc">Техническое сопровождение сайтов: исправление ошибок, улучшение функционала, оптимизация скорости и обновление контента.</div>
-                                <div class="services-block__item-prices">
-                                    <div class="services-block__item-price">
-                                        <div class="desc">Стоимость</div>
-                                        <div class="title">от 10$</div>
-                                    </div>
-                                    <div class="services-block__item-srok">
-                                        <div class="desc">Сроки</div>
-                                        <div class="title">от 1 дня</div>
-                                    </div>
-                                </div>
-                                <div class="services-block__item-btn">
-                                    <a href="javascript:void(0);">
-                                        <div class="text">Обсудить проект</div>
-                                        <div class="icon">
-                                            <svg class="svg-icon">
-                                                <use xlink:href="images/sprite.svg#chat"></use>
-                                            </svg>
-                                        </div>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="services-block__pagination swiper-pagination"></div>
+            <div class="form-block__right">
+                <img src="images/form-image.png" alt="form-image" loading="lazy">
             </div>
-        </section>
+        </div>
+    </section>
 
-        <section class="advantages-block block-padding">
-            <div class="advantages-block__inner block-width">
-                <div class="advantages-block__left">
-                    <div class="advantages-block__pretitle site-pretitle">
-                        <div class="arrow">
-                            <svg class="svg-icon">
-                                <use xlink:href="images/sprite.svg#left-arrow"></use>
-                            </svg>
-                        </div>
-                        <div class="text">Преимущества</div>
-                        <div class="arrow">
-                            <svg class="svg-icon">
-                                <use xlink:href="images/sprite.svg#right-arrow"></use>
-                            </svg>
-                        </div>
-                    </div>
-                    <div class="advantages-block__title block-title">Нам важно выстроить спокойное и комфортное сотрудничество</div>
-                    <div class="advantages-block__image">
-                        <img src="images/advantages-image.png" alt="advantages-image">
-                    </div>
-                </div>
-                <div class="advantages-block__right">
-                    <div class="advantages-block__list">
-                        <div class="advantages-block__item">
-                            <div class="advantages-block__item-number">
-                                <div class="arrow">
-                                    <svg class="svg-icon">
-                                        <use xlink:href="images/sprite.svg#left-arrow"></use>
-                                    </svg>
-                                </div>
-                                <div class="text">1</div>
-                                <div class="arrow">
-                                    <svg class="svg-icon">
-                                        <use xlink:href="images/sprite.svg#right-arrow"></use>
-                                    </svg>
-                                </div>
-                            </div>
-                            <div class="advantages-block__item-title">Безопасное сотрудничество</div>
-                            <div class="advantages-block__item-desc">Работаю по договору, где заранее прописаны объём работ, сроки и условия. Это делает процесс прозрачным и предсказуемым</div>
-                        </div>
-
-                        <div class="advantages-block__item">
-                            <div class="advantages-block__item-number">
-                                <div class="arrow">
-                                    <svg class="svg-icon">
-                                        <use xlink:href="images/sprite.svg#left-arrow"></use>
-                                    </svg>
-                                </div>
-                                <div class="text">2</div>
-                                <div class="arrow">
-                                    <svg class="svg-icon">
-                                        <use xlink:href="images/sprite.svg#right-arrow"></use>
-                                    </svg>
-                                </div>
-                            </div>
-                            <div class="advantages-block__item-title">Комфортная коммуникация</div>
-                            <div class="advantages-block__item-desc">Я всегда на связи, спокойно обсуждаю идеи и объясняю решения. Работа строится в диалоге, без давления и лишнего стресса</div>
-                        </div>
-
-                        <div class="advantages-block__item">
-                            <div class="advantages-block__item-number">
-                                <div class="arrow">
-                                    <svg class="svg-icon">
-                                        <use xlink:href="images/sprite.svg#left-arrow"></use>
-                                    </svg>
-                                </div>
-                                <div class="text">3</div>
-                                <div class="arrow">
-                                    <svg class="svg-icon">
-                                        <use xlink:href="images/sprite.svg#right-arrow"></use>
-                                    </svg>
-                                </div>
-                            </div>
-                            <div class="advantages-block__item-title">Погружение в задачу</div>
-                            <div class="advantages-block__item-desc">Вникаю в проект, цели и контекст, а не просто работаю по ТЗ. Мне важно понять, зачем и для кого делается продукт</div>
-                        </div>
-
-                        <div class="advantages-block__item">
-                            <div class="advantages-block__item-number">
-                                <div class="arrow">
-                                    <svg class="svg-icon">
-                                        <use xlink:href="images/sprite.svg#left-arrow"></use>
-                                    </svg>
-                                </div>
-                                <div class="text">4</div>
-                                <div class="arrow">
-                                    <svg class="svg-icon">
-                                        <use xlink:href="images/sprite.svg#right-arrow"></use>
-                                    </svg>
-                                </div>
-                            </div>
-                            <div class="advantages-block__item-title">Понятный процесс работы</div>
-                            <div class="advantages-block__item-desc">Проект делится на этапы, и на каждом из них понятно, что происходит дальше. Вы всегда видите прогресс и знаете, какой следующий шаг</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section class="form-block block-padding">
-            <div class="form-block__inner block-width">
-                <div class="form-block__left">
-                    <div class="form-block__title block-title">Остались вопросы <br>или нужна консультация?</div>
-                    <div class="form-block__desc">Оставьте заявку и наши менеджеры свяжутся в рабочее время, чтобы ответить на вопросы и уточнить детали</div>
-                    <div class="form-block__form">
-                        <form>
-                            <div class="form-item">
-                                <div class="form-item__value">
-                                    <input type="text" placeholder="Имя">
-                                </div>
-                            </div>
-                            <div class="form-item">
-                                <div class="form-item__value">
-                                    <input type="text" placeholder="Телефон">
-                                </div>
-                            </div>
-                            <div class="form-item">
-                                <div class="form-item__value">
-                                    <input type="text" placeholder="Почта *" required>
-                                </div>
-                            </div>
-                            <div class="form-item">
-                                <div class="form-item__value">
-                                    <label>
-                                        <input type="checkbox" required>
-                                        <span class="checkbox-item"></span>
-                                        <span class="text">Согласен на обработку <a href="#">персональных данных</a> <br>и c <a href="#">политикой обработки персональных данных</a></span>
-                                    </label>
-                                </div>
-                            </div>
-                            <div class="form-item item-submit">
-                                <div class="form-item__value">
-                                    <button type="submit" class="primary-button-icon">
-                                        <span class="text">Получить консультацию</span>
-                                        <span class="icon">
-                                            <svg class="svg-icon">
-                                                <use xlink:href="images/sprite.svg#chevron-right"></use>
-                                            </svg>
-                                        </span>
-                                    </button>
-                                </div>
-                            </div>
-                        </form>
-                    </div>
-                </div>
-                <div class="form-block__right">
-                    <img src="images/form-image.png" alt="form-image" loading="lazy">
-                </div>
-            </div>
-        </section>
 
         <footer class="site-footer block-padding">
             <div class="site-footer__inner block-width">
@@ -714,8 +717,10 @@
             </div>
         </footer>
     </div>
-
+asd
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/lenis@1.3.25/dist/lenis.min.js"></script>
+
     <script src="scripts/app.js"></script>
 </body>
 </html>
