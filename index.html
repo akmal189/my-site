@@ -5,6 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 
+    <link rel="shortcut icon" type="image/png" href="images/logo.svg" />
+    <link rel="icon" href="images/logo.svg" type="image/x-icon" />
+    
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:ital,wght@0,100..900;1,100..900&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Manrope:wght@200..800&family=Onest:wght@100..900&family=Rubik:ital,wght@0,300..900;1,300..900&family=Sofia+Sans+Extra+Condensed:ital,wght@0,1..1000;1,1..1000&display=swap" rel="stylesheet">
@@ -12,7 +16,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
     <link href="https://cdn.jsdelivr.net/npm/lenis@1.3.25/dist/lenis.min.css" rel="stylesheet">
     
-    <link rel="stylesheet" href="css/styles.min.css">
+    <link rel="stylesheet" href="css/styles.min.css" fetchpriority="high">
 </head>
 <body>
     <div class="site-wrapper">
@@ -101,7 +105,7 @@
                 </div>
                 <div class="site-header__contacts">
                     <div class="site-header__button">
-                        <a href="javascript:void(0);" class="primary-button-icon">
+                        <a href="javascript:void(0);" class="primary-button">
                             <span class="text">Обсудить проект</span>
                             <span class="icon">
                                 <svg class="svg-icon">
@@ -127,6 +131,14 @@
                             </a>
                         </div>
                     </div>
+                </div>
+
+                <div class="site-header__burger-btn">
+                    <a href="javascript:void(0);">
+                        <svg class="svg-icon">
+                            <use xlink:href="images/sprite.svg#burger-icon"></use>
+                        </svg>
+                    </a>
                 </div>
             </div>
         </header>
@@ -183,7 +195,7 @@
                     </svg>
                 </div>
             </div>
-            <div class="portfolio-block__title block-title">Некоторые из готовых проектов в портфолио</div>
+            <h2 class="portfolio-block__title block-title">Некоторые из готовых проектов в портфолио</h2>
             <div class="portfolio-block__list">
                 <div class="portfolio-block__item">
                     <a href="https://namgar.mn/"></a>
@@ -255,7 +267,7 @@
                 </div>
             </div>
             <div class="services-block__header">
-                <div class="services-block__title block-title">Достигайте своих бизнес целей, используя наш опыт <br>и компетенции</div>
+                <h2 class="services-block__title block-title">Достигайте своих бизнес целей, используя наш опыт <br>и компетенции</h2>
                 <div class="services-block__desc">Поможем построить прочный технологический фундамент <br>и стать лидером в своей отрасли</div>
                 <div class="services-block__controls">
                     <div class="swiper-button-prev">
@@ -472,7 +484,7 @@
                         </svg>
                     </div>
                 </div>
-                <div class="advantages-block__title block-title">Нам важно выстроить спокойное и комфортное сотрудничество</div>
+                <h2 class="advantages-block__title block-title">Нам важно выстроить спокойное и комфортное сотрудничество</h2>
                 <div class="advantages-block__image">
                     <img src="images/advantages-image.png" alt="advantages-image">
                 </div>
@@ -558,7 +570,7 @@
     <section class="form-block block-padding">
         <div class="form-block__inner block-width">
             <div class="form-block__left">
-                <div class="form-block__title block-title">Остались вопросы <br>или нужна консультация?</div>
+                <h2 class="form-block__title block-title">Остались вопросы <br>или нужна консультация?</h2>
                 <div class="form-block__desc">Оставьте заявку и наши менеджеры свяжутся в рабочее время, чтобы ответить на вопросы и уточнить детали</div>
                 <div class="form-block__form">
                     <form>
@@ -717,7 +729,7 @@
             </div>
         </footer>
     </div>
-asd
+    
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/lenis@1.3.25/dist/lenis.min.js"></script>
 

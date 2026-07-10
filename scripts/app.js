@@ -23,12 +23,11 @@ document.addEventListener('DOMContentLoaded', function(){
 			document.body.style.height = height + 'px';
 		});
 	})
-    
+
     const servicesSlider = new Swiper ('.services-block__list .swiper', {
         slidesPerView: 4,
         spaceBetween: 12,
         loop: false,
-        freeMode: true,
         watchSlidesVisibility: true,
         watchSlidesProgress: true,
         lazy: {
@@ -51,6 +50,9 @@ document.addEventListener('DOMContentLoaded', function(){
                 slidesPerView: 2,
             },
             980: {
+                slidesPerView: 3,
+            },
+            1100: {
                 slidesPerView: 4,
             }
         }
@@ -117,5 +119,16 @@ document.addEventListener('DOMContentLoaded', function(){
 
     if(document.querySelector('.ticker-block')) {
         tickerBlock();
+    }
+
+    const toTopBtn = document.querySelector('.site-footer__to-top-btn a');
+
+    if(toTopBtn) {
+        toTopBtn.addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        })
     }
 })
