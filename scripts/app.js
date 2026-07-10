@@ -1,179 +1,267 @@
-document.addEventListener('DOMContentLoaded', function(){
-    const lenis = new Lenis({
-        // параметры настройки
-        lerp: 0.08, // коэффициент сглаживания (0 - 1)
-        smooth: true, // включить плавный скролл
-        direction: 'vertical', // направление скролла (vertical or horizontal)
-        smoothWheel: true, // плавный скролл колесом мыши
-        smoothTouch: false, // плавный скролл при касании (mobile)
-        infinite: false // бесконечный скролл
-    })
+/**
+ * Site entry point.
+ * Each feature is isolated in its own module-like function and only
+ * initialised if the required DOM nodes actually exist on the page.
+ */
+'use strict';
 
-    window.addEventListener('load', () => {
-		// запуск анимации скролла
-		function raf(time) {
-			lenis.raf(time);
-			requestAnimationFrame(raf);
-		}
+document.addEventListener('DOMContentLoaded', () => {
+	initSmoothScroll();
+	initServicesSlider();
+	initTicker();
+	initScrollToTop();
+	initBurgerMenu();
+});
 
-		requestAnimationFrame(raf);
+/* ------------------------------------------------------------------ */
+/* Smooth scroll (Lenis)                                              */
+/* ------------------------------------------------------------------ */
 
+function initSmoothScroll() {
+	if (typeof Lenis === 'undefined') return;
+
+	const lenis = new Lenis({
+		lerp: 0.08,
+		smooth: true,
+		direction: 'vertical',
+		smoothWheel: true,
+		smoothTouch: false,
+		infinite: false,
+	});
+
+	let rafId = null;
+
+	function raf(time) {
+		lenis.raf(time);
+		rafId = requestAnimationFrame(raf);
+	}
+
+	window.addEventListener('load', () => {
+		rafId = requestAnimationFrame(raf);
+
+		// Forces layout recalculation once assets have loaded so Lenis
+		// gets the correct scroll height. Runs once, not on every frame.
 		requestAnimationFrame(() => {
-			let height = document.body.scrollHeight;
-			document.body.style.height = height + 'px';
+			document.body.style.height = `${document.body.scrollHeight}px`;
 		});
-	})
+	});
 
-    const servicesSlider = new Swiper ('.services-block__list .swiper', {
-        slidesPerView: 4,
-        spaceBetween: 12,
-        loop: false,
-        watchSlidesVisibility: true,
-        watchSlidesProgress: true,
-        lazy: {
-            loadPrevNext: true, // pre-loads the next image to avoid showing a loading placeholder if possible
-            loadPrevNextAmount: 2 //or, if you wish, preload the next 2 images
-        },
-        navigation: {
-            nextEl: '.services-block__controls .swiper-button-next',
-            prevEl: '.services-block__controls .swiper-button-prev',
-        },
-        pagination: {
-            el: '.services-block__pagination.swiper-pagination',
-            clickable: true,
-        },
-        breakpoints: {
-            0: {
-                slidesPerView: 1,
-            },
-            640: {
-                slidesPerView: 2,
-            },
-            980: {
-                slidesPerView: 3,
-            },
-            1100: {
-                slidesPerView: 4,
-            }
-        }
-    });
+	// Avoid burning CPU on background tabs.
+	document.addEventListener('visibilitychange', () => {
+		if (document.hidden && rafId !== null) {
+			cancelAnimationFrame(rafId);
+			rafId = null;
+		} else if (!document.hidden && rafId === null) {
+			rafId = requestAnimationFrame(raf);
+		}
+	});
+}
 
-    function tickerBlock() {
-        const wrap = document.querySelector('.ticker-block__inner');
-        const ticker = document.querySelector('.ticker-block');
-        const originalItems = Array.from(wrap.children);
+/* ------------------------------------------------------------------ */
+/* Services slider (Swiper)                                           */
+/* ------------------------------------------------------------------ */
 
-        const originalWidth = wrap.scrollWidth; // ширина одного набора
-        const tickerWidth = ticker.offsetWidth;
+function initServicesSlider() {
+	const container = document.querySelector('.services-block__list .swiper');
+	if (!container || typeof Swiper === 'undefined') return;
 
-        // сколько наборов нужно, чтобы покрыть 2x ширины контейнера + запас
-        const setsNeeded = Math.max(2, Math.ceil((tickerWidth * 2) / originalWidth) + 1);
+	new Swiper(container, {
+		slidesPerView: 4,
+		spaceBetween: 12,
+		loop: false,
+		watchSlidesVisibility: true,
+		watchSlidesProgress: true,
+		lazy: {
+			loadPrevNext: true,
+			loadPrevNextAmount: 2,
+		},
+		navigation: {
+			nextEl: '.services-block__controls .swiper-button-next',
+			prevEl: '.services-block__controls .swiper-button-prev',
+		},
+		pagination: {
+			el: '.services-block__pagination.swiper-pagination',
+			clickable: true,
+		},
+		breakpoints: {
+			0: { slidesPerView: 1 },
+			640: { slidesPerView: 2 },
+			980: { slidesPerView: 3 },
+			1100: { slidesPerView: 4 },
+		},
+	});
+}
 
-        const fragment = document.createDocumentFragment();
-        for (let i = 0; i < setsNeeded - 1; i++) {
-            originalItems.forEach(el => fragment.appendChild(el.cloneNode(true)));
-        }
-        wrap.appendChild(fragment); // один reflow вместо множества
+/* ------------------------------------------------------------------ */
+/* Ticker / marquee                                                   */
+/* ------------------------------------------------------------------ */
 
-        const width = originalWidth; // ширина одного цикла для зацикливания
+const TICKER_SPEED_PX_PER_SEC = 58;
 
-        let rafId = null;
-        let position = 0;
-        let lastTime = null;
-        const speedPxPerSec = 58;
+function initTicker() {
+	const ticker = document.querySelector('.ticker-block');
+	const wrap = ticker?.querySelector('.ticker-block__inner');
+	if (!ticker || !wrap) return;
 
-        wrap.style.willChange = 'transform';
-        wrap.style.transform = 'translate3d(0, 0, 0)';
+	cloneItemsToFillViewport(wrap, ticker);
 
-        function animate(timestamp) {
-            if (lastTime === null) lastTime = timestamp;
-            const delta = timestamp - lastTime;
-            lastTime = timestamp;
+	const loopWidth = wrap.scrollWidth / getCloneMultiplier(wrap);
+	const controller = createTickerAnimation(wrap, loopWidth, TICKER_SPEED_PX_PER_SEC);
 
-            position += (speedPxPerSec * delta) / 1000;
-            if (position >= width) position -= width;
+	ticker.addEventListener('mouseenter', controller.stop);
+	ticker.addEventListener('mouseleave', controller.start);
+	document.addEventListener('visibilitychange', () => {
+		document.hidden ? controller.stop() : controller.start();
+	});
 
-            wrap.style.transform = `translate3d(${-position}px, 0, 0)`;
-            rafId = requestAnimationFrame(animate);
-        }
+	controller.start();
+}
 
-        function start() {
-            if (rafId === null) {
-                lastTime = null;
-                rafId = requestAnimationFrame(animate);
-            }
-        }
+/**
+ * Duplicates the ticker items enough times to cover at least
+ * 2x the container width, so the loop never shows empty space.
+ */
+function cloneItemsToFillViewport(wrap, ticker) {
+	const originalItems = Array.from(wrap.children);
+	const originalWidth = wrap.scrollWidth;
+	const tickerWidth = ticker.offsetWidth;
 
-        function stop() {
-            if (rafId !== null) {
-                cancelAnimationFrame(rafId);
-                rafId = null;
-            }
-        }
+	const setsNeeded = Math.max(2, Math.ceil((tickerWidth * 2) / originalWidth) + 1);
 
-        ticker.addEventListener('mouseenter', stop);
-        ticker.addEventListener('mouseleave', start);
+	const fragment = document.createDocumentFragment();
+	for (let i = 0; i < setsNeeded - 1; i++) {
+		originalItems.forEach((el) => fragment.appendChild(el.cloneNode(true)));
+	}
+	wrap.appendChild(fragment); // single reflow instead of one per clone
 
-        start();
-    }
+	wrap.dataset.cloneSets = String(setsNeeded);
+}
 
-    if(document.querySelector('.ticker-block')) {
-        tickerBlock();
-    }
+function getCloneMultiplier(wrap) {
+	return Number(wrap.dataset.cloneSets) || 1;
+}
 
-    const toTopBtn = document.querySelector('.site-footer__to-top-btn a');
+/**
+ * Creates a GPU-friendly translate3d loop animation with start/stop controls.
+ */
+function createTickerAnimation(wrap, loopWidth, speedPxPerSec) {
+	let rafId = null;
+	let position = 0;
+	let lastTime = null;
 
-    if(toTopBtn) {
-        toTopBtn.addEventListener('click', () => {
-            window.scrollTo({
-                top: 0,
-                behavior: 'smooth'
-            });
-        })
-    }
+	wrap.style.willChange = 'transform';
+	wrap.style.transform = 'translate3d(0, 0, 0)';
 
-    const burgerBtn = document.querySelector('.site-header__burger-btn a');
-    const burgerCloser = document.querySelector('.burger-menu__closer a');
-    const burgerMenu = document.querySelector('.burger-menu');
-    const headerMenu = document.querySelector('.site-header__menu nav');
-    const burgerMenuInner = burgerMenu.querySelector('.burger-menu__inner');
+	function tick(timestamp) {
+		if (lastTime === null) lastTime = timestamp;
+		const delta = timestamp - lastTime;
+		lastTime = timestamp;
 
-    function isMobileView() {
-        return window.innerWidth <= 1260 || (typeof IsMobile !== 'undefined' && IsMobile);
-    }
+		position = (position + (speedPxPerSec * delta) / 1000) % loopWidth;
+		wrap.style.transform = `translate3d(${-position}px, 0, 0)`;
 
-    function updateMenuPosition() {
-        if (isMobileView()) {
-            if (!burgerMenuInner.contains(headerMenu)) {
-                burgerMenuInner.appendChild(headerMenu);
-            }
-        } else {
-            const headerContainer = document.querySelector('.site-header__menu');
-            if (!headerContainer.contains(headerMenu)) {
-                headerContainer.appendChild(headerMenu);
-            }
-            burgerMenu.classList.remove('opened');
-            document.querySelector('html').classList.remove('overflow_hidden');
-        }
-    }
+		rafId = requestAnimationFrame(tick);
+	}
 
-    updateMenuPosition();
+	return {
+		start() {
+			if (rafId === null) {
+				lastTime = null;
+				rafId = requestAnimationFrame(tick);
+			}
+		},
+		stop() {
+			if (rafId !== null) {
+				cancelAnimationFrame(rafId);
+				rafId = null;
+			}
+		},
+	};
+}
 
-    burgerBtn.addEventListener('click', (e) => {
-        burgerMenu.classList.toggle('opened');
-    });
+/* ------------------------------------------------------------------ */
+/* Scroll to top                                                      */
+/* ------------------------------------------------------------------ */
 
-    burgerCloser.addEventListener('click', (e) => {
-        burgerMenu.classList.remove('opened');
-    });
+function initScrollToTop() {
+	const toTopBtn = document.querySelector('.site-footer__to-top-btn a');
+	if (!toTopBtn) return;
 
-    document.addEventListener('click', (e) => {
-        if (burgerMenu.classList.contains('opened') &&
-            !burgerMenuInner.contains(e.target) &&
-            e.target !== burgerBtn) {
-            burgerMenu.classList.remove('opened');
-        }
-    });
+	toTopBtn.addEventListener('click', (e) => {
+		e.preventDefault();
+		window.scrollTo({ top: 0, behavior: 'smooth' });
+	});
+}
 
-    window.addEventListener('resize', updateMenuPosition);
-})
+/* ------------------------------------------------------------------ */
+/* Burger menu                                                        */
+/* ------------------------------------------------------------------ */
+
+const MOBILE_BREAKPOINT = 1260;
+
+function initBurgerMenu() {
+	const burgerBtn = document.querySelector('.site-header__burger-btn a');
+	const burgerCloser = document.querySelector('.burger-menu__closer a');
+	const burgerMenu = document.querySelector('.burger-menu');
+	const headerMenuContainer = document.querySelector('.site-header__menu');
+	const headerMenu = headerMenuContainer?.querySelector('nav');
+	const burgerMenuInner = burgerMenu?.querySelector('.burger-menu__inner');
+
+	// Bail out cleanly if the header markup isn't present on this page.
+	if (!burgerBtn || !burgerCloser || !burgerMenu || !headerMenuContainer || !headerMenu || !burgerMenuInner) {
+		return;
+	}
+
+	const mediaQuery = window.matchMedia(`(max-width: ${MOBILE_BREAKPOINT}px)`);
+
+	function isMobileView() {
+		return mediaQuery.matches || (typeof IsMobile !== 'undefined' && IsMobile);
+	}
+
+	function closeMenu() {
+		burgerMenu.classList.remove('opened');
+		document.documentElement.classList.remove('overflow_hidden');
+	}
+
+	function updateMenuPosition() {
+		const target = isMobileView() ? burgerMenuInner : headerMenuContainer;
+		if (!target.contains(headerMenu)) {
+			target.appendChild(headerMenu);
+		}
+		if (!isMobileView()) {
+			closeMenu();
+		}
+	}
+
+	updateMenuPosition();
+
+	burgerBtn.addEventListener('click', () => {
+		burgerMenu.classList.toggle('opened');
+	});
+
+	burgerCloser.addEventListener('click', closeMenu);
+
+	document.addEventListener('click', (e) => {
+		const isOpen = burgerMenu.classList.contains('opened');
+		const clickedInsideMenu = burgerMenuInner.contains(e.target);
+		const clickedToggleBtn = burgerBtn.contains(e.target);
+
+		if (isOpen && !clickedInsideMenu && !clickedToggleBtn) {
+			closeMenu();
+		}
+	});
+
+	window.addEventListener('resize', debounce(updateMenuPosition, 150));
+}
+
+/* ------------------------------------------------------------------ */
+/* Utils                                                              */
+/* ------------------------------------------------------------------ */
+
+function debounce(fn, delay) {
+	let timeoutId;
+	return (...args) => {
+		clearTimeout(timeoutId);
+		timeoutId = setTimeout(() => fn(...args), delay);
+	};
+}

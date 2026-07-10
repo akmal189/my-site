@@ -15,6 +15,7 @@
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
     <link href="https://cdn.jsdelivr.net/npm/lenis@1.3.25/dist/lenis.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/remodal@1.1.1/dist/remodal-default-theme.min.css">
     
     <link rel="stylesheet" href="css/styles.min.css" fetchpriority="high">
 </head>
@@ -105,7 +106,7 @@
                 </div>
                 <div class="site-header__contacts">
                     <div class="site-header__button">
-                        <a href="javascript:void(0);" class="primary-button">
+                        <a href="javascript:void(0);" class="primary-button" data-remodal-target="popup-form">
                             <span class="text">Обсудить проект</span>
                             <span class="icon">
                                 <svg class="svg-icon">
@@ -750,6 +751,58 @@
                         </svg>
                     </a>
                 </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="popup-form-block">
+        <div class="popup-form-block__body">
+            <a href="javascript:void(0);" class="popup-form-block__closer">
+                <svg class="svg-icon">
+                    <use xlink:href="images/sprite.svg#close-icon"></use>
+                </svg>
+            </a>
+            <h2 class="form-block__title block-title">Остались вопросы <br>или нужна консультация?</h2>
+            <div class="form-block__desc">Оставьте заявку и наши менеджеры свяжутся в рабочее время, чтобы ответить на вопросы и уточнить детали</div>
+            <div class="form-block__form">
+                <form>
+                    <div class="form-item">
+                        <div class="form-item__value">
+                            <input type="text" placeholder="Имя">
+                        </div>
+                    </div>
+                    <div class="form-item">
+                        <div class="form-item__value">
+                            <input type="text" placeholder="Телефон">
+                        </div>
+                    </div>
+                    <div class="form-item">
+                        <div class="form-item__value">
+                            <input type="text" placeholder="Почта *" required>
+                        </div>
+                    </div>
+                    <div class="form-item">
+                        <div class="form-item__value">
+                            <label>
+                                <input type="checkbox" required>
+                                <span class="checkbox-item"></span>
+                                <span class="text">Согласен на обработку <a href="#">персональных данных</a> <br>и c <a href="#">политикой обработки персональных данных</a></span>
+                            </label>
+                        </div>
+                    </div>
+                    <div class="form-item item-submit">
+                        <div class="form-item__value">
+                            <button type="submit" class="primary-button-icon">
+                                <span class="text">Получить консультацию</span>
+                                <span class="icon">
+                                    <svg class="svg-icon">
+                                        <use xlink:href="images/sprite.svg#chevron-right"></use>
+                                    </svg>
+                                </span>
+                            </button>
+                        </div>
+                    </div>
+                </form>
             </div>
         </div>
     </div>
