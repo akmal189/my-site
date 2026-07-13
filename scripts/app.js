@@ -11,7 +11,7 @@ document.addEventListener('DOMContentLoaded', () => {
 	initTicker();
 	initScrollToTop();
 	initBurgerMenu();
-	headerPopup();
+	popupForms();
 	cookiePopup();
 	tgButton();
 });
@@ -210,6 +210,7 @@ function initBurgerMenu() {
 	const headerMenu = headerMenuContainer?.querySelector('nav');
 	const burgerMenuInner = burgerMenu?.querySelector('.burger-menu__inner');
 	const messengers = document.querySelector('.site-header__messengers');
+	const headerContacts = document.querySelector('.site-header__contacts');
 
 	// Bail out cleanly if the header markup isn't present on this page.
 	if (!burgerBtn || !burgerCloser || !burgerMenu || !headerMenuContainer || !headerMenu || !burgerMenuInner) {
@@ -229,9 +230,10 @@ function initBurgerMenu() {
 
 	function updateMenuPosition() {
 		const target = isMobileView() ? burgerMenuInner : headerMenuContainer;
+		const target2 = isMobileView() ? burgerMenuInner : headerContacts;
 		if (!target.contains(headerMenu)) {
 			target.appendChild(headerMenu);
-			target.appendChild(messengers);
+			target2.appendChild(messengers);
 		}
 		if (!isMobileView()) {
 			closeMenu();
@@ -261,51 +263,68 @@ function initBurgerMenu() {
 }
 
 /* ------------------------------------------------------------------ */
-/* Header popup                                                       */
+/* Popup forms                                                        */
 /* ------------------------------------------------------------------ */
 
-function headerPopup() {
-	const popupBtn = document.querySelector('.popup-btn');
+function popupForms() {
+	const popupBtn = document.querySelectorAll('.popup-btn');
 	const popupForm = document.querySelectorAll('.popup-form-block');
 	const popupCloser = document.querySelectorAll('.popup-form-block__closer');
 
-	if(!popupBtn) return;
+	if (!popupBtn.length) return;
 
-	popupBtn.addEventListener('click', (e) => {
-		e.preventDefault();
-		console.log(1)
-		const dataForm = popupBtn.dataset.popup;
-
-		popupForm.forEach((formItem) => {
-			if(dataForm == formItem.dataset.popup) {
-				formItem.classList.add('opened')
-				document.documentElement.classList.add('overflow_hidden');
-			}
-		})
-	})
-
-	function closeMenu() {
-		popupForm.forEach((el) => el.classList.remove('opened'));
+	function closePopup() {
+		popupForm.forEach(form => form.classList.remove('opened'));
 		document.documentElement.classList.remove('overflow_hidden');
 	}
 
-	document.addEventListener('click', (e) => {
-		const openedForm = document.querySelector('.popup-form-block.opened');
+	popupBtn.forEach(btn => {
+		btn.addEventListener('click', e => {
+			e.preventDefault();
 
-		if (!openedForm) return;
+			const popupName = btn.dataset.popup;
 
-		const modalContent = openedForm.querySelector('.popup-form-block__body');
+			closePopup();
 
-		if (!modalContent.contains(e.target) && !popupBtn.contains(e.target)) {
-			closeMenu();
-		}
+			popupForm.forEach(form => {
+				if (form.dataset.popup === popupName) {
+					form.classList.add('opened');
+					document.documentElement.classList.add('overflow_hidden');
+				}
+			});
+		});
 	});
 
-	popupCloser.forEach((closeBtn) => {
-		closeBtn.addEventListener('click', closeMenu)
-	})
+	popupCloser.forEach(btn => {
+		btn.addEventListener('click', closePopup);
+	});
 
-	
+	document.addEventListener('click', e => {
+		const openBtn = e.target.closest('.popup-btn');
+
+		if (openBtn) {
+			e.preventDefault();
+
+			closePopup();
+
+			document
+				.querySelector(`.popup-form-block[data-popup="${openBtn.dataset.popup}"]`)
+				?.classList.add('opened');
+
+			document.documentElement.classList.add('overflow_hidden');
+			return;
+		}
+
+		const openedPopup = document.querySelector('.popup-form-block.opened');
+		if (!openedPopup) return;
+
+		if (
+			e.target.closest('.popup-form-block__closer') ||
+			!e.target.closest('.popup-form-block__body')
+		) {
+			closePopup();
+		}
+	});
 }
 
 /* ------------------------------------------------------------------ */
