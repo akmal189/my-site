@@ -106,7 +106,7 @@
                 </div>
                 <div class="site-header__contacts">
                     <div class="site-header__button">
-                        <a href="javascript:void(0);" class="primary-button" data-remodal-target="popup-form">
+                        <a href="javascript:void(0);" class="primary-button popup-btn" data-popup="header-popup">
                             <span class="text">Обсудить проект</span>
                             <span class="icon">
                                 <svg class="svg-icon">
@@ -363,7 +363,7 @@
                         </div>
 
                         <div class="services-block__item swiper-slide">
-                            <div class="services-block__item-title">Telegram-бот</div>
+                            <div class="services-block__item-title">Telegram-бот и Mini App</div>
                             <div class="services-block__item-desc">Разработка автоматизированных ботов для бизнеса: прием заказов, записи, уведомления, интеграции с CRM и другими сервисами.</div>
                             <div class="services-block__item-prices">
                                 <div class="services-block__item-price">
@@ -731,7 +731,7 @@
         </footer>
     </div>
 
-    <div class="burger-menu">
+    <div class="burger-menu" data-lenis-prevent>
         <div class="burger-menu__inner">
             <div class="burger-menu__header">
                 <div class="burger-menu__logo">
@@ -755,7 +755,7 @@
         </div>
     </div>
 
-    <div class="popup-form-block">
+    <div class="popup-form-block" data-popup="header-popup" data-lenis-prevent>
         <div class="popup-form-block__body">
             <a href="javascript:void(0);" class="popup-form-block__closer">
                 <svg class="svg-icon">
@@ -803,6 +803,33 @@
                         </div>
                     </div>
                 </form>
+            </div>
+        </div>
+    </div>
+
+    <div class="tg-button-block">
+        <div class="tg-button-block__inner">
+            <a href="#">
+                <span class="tg-button-block__icon">
+                    <img src="images/tg-button-icon.svg" alt="tg-button-icon">
+                </span>
+                <span class="tg-button-block__counter">1</span>
+                <span class="tg-button-block__message">Мы онлайн! напишите нам в Telegram.</span>
+            </a>
+        </div>
+    </div>
+
+    <div class="cookie-block">
+        <div class="cookie-block__inner">
+            <div class="cookie-block__icon">
+                <img src="images/cookie-icon.png" alt="cookie-icon">
+            </div>
+            <div class="cookie-block__body">
+                <div class="cookie-block__text">Мы используем файлы cookie для персонализации вашего взаимодействия с сайтом и анализа трафика сайта.</div>
+                <div class="cookie-block__btns">
+                    <div class="cookie-block__btns-item"><a href="javascript:void(0);" class="cookie-block__btn cookie-block__accept">Принять</a></div>
+                    <div class="cookie-block__btns-item"><a href="/cookie-policy.html" class="cookie-block__btn">Политика использования файлов cookie</a></div>
+                </div>
             </div>
         </div>
     </div>
