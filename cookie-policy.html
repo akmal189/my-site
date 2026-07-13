@@ -150,11 +150,16 @@
             <div class="page-path__item">
                 <a href="/">Главная</a>
             </div>
+            <div class="page-path__delim">
+                <svg class="svg-icon">
+                    <use xlink:href="images/sprite.svg#chevron-right"></use>
+                </svg>
+            </div>
             <div class="page-path__item">
                 <span>Политика использования файлов cookie</span>
             </div>
         </div>
-        <h1>Политика использования файлов cookie</h1>
+        <h1 class="block-title">Политика использования файлов cookie</h1>
 
         <div class="site-content__body">
             <h2>Файлы cookie и цели их использования</h2>
@@ -263,9 +268,9 @@
 
                 <div class="site-footer__bottom">
                     <div class="site-footer__copy">
-                        2026 © ООО "growthsite"
+                        © 2026 growthsite
                         <br>
-                        Все права защищены
+                        Современные IT-решения под ключ
                     </div>
                     <div class="site-footer__note">
                         Вся представленная на сайте информация, касающаяся технических характеристик и стоимости товара, носит информационный характер и ни при каких условиях не является публичной офертой
@@ -360,12 +365,23 @@
 
     <div class="tg-button-block">
         <div class="tg-button-block__inner">
-            <a href="#">
+            <div class="tg-button-block__message">
+                Мы онлайн! напишите нам в Telegram.
+
+                <div class="tg-button-block__closer">
+                    <a href="javascript:void(0);">
+                        <svg class="svg-icon">
+                            <use xlink:href="images/sprite.svg#close-icon"></use>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+            
+            <a href="#" class="tg-button-block__button">
                 <span class="tg-button-block__icon">
                     <img src="images/tg-button-icon.svg" alt="tg-button-icon">
                 </span>
                 <span class="tg-button-block__counter">1</span>
-                <span class="tg-button-block__message">Мы онлайн! напишите нам в Telegram.</span>
             </a>
         </div>
     </div>

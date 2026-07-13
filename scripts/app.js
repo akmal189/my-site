@@ -13,6 +13,7 @@ document.addEventListener('DOMContentLoaded', () => {
 	initBurgerMenu();
 	headerPopup();
 	cookiePopup();
+	tgButton();
 });
 
 /* ------------------------------------------------------------------ */
@@ -208,6 +209,7 @@ function initBurgerMenu() {
 	const headerMenuContainer = document.querySelector('.site-header__menu');
 	const headerMenu = headerMenuContainer?.querySelector('nav');
 	const burgerMenuInner = burgerMenu?.querySelector('.burger-menu__inner');
+	const messengers = document.querySelector('.site-header__messengers');
 
 	// Bail out cleanly if the header markup isn't present on this page.
 	if (!burgerBtn || !burgerCloser || !burgerMenu || !headerMenuContainer || !headerMenu || !burgerMenuInner) {
@@ -229,6 +231,7 @@ function initBurgerMenu() {
 		const target = isMobileView() ? burgerMenuInner : headerMenuContainer;
 		if (!target.contains(headerMenu)) {
 			target.appendChild(headerMenu);
+			target.appendChild(messengers);
 		}
 		if (!isMobileView()) {
 			closeMenu();
@@ -339,6 +342,21 @@ function cookiePopup() {
 		cookieBlock.classList.remove('opened');
 		setCookie('cookieAccepted', '1', 365); 
 	});
+}
+
+/* ------------------------------------------------------------------ */
+/* TG button                                                          */
+/* ------------------------------------------------------------------ */
+
+function tgButton() {
+	const button = document.querySelector('.tg-button-block__closer a');
+	const message = document.querySelector('.tg-button-block__message');
+
+	if(!button) return;
+
+	button.addEventListener('click', () => {
+		message.classList.add('hide')
+	})
 }
 
 /* ------------------------------------------------------------------ */
