@@ -14,6 +14,7 @@ document.addEventListener('DOMContentLoaded', () => {
 	popupForms();
 	cookiePopup();
 	tgButton();
+	faqBlock();
 });
 
 /* ------------------------------------------------------------------ */
@@ -375,6 +376,22 @@ function tgButton() {
 
 	button.addEventListener('click', () => {
 		message.classList.add('hide')
+	})
+}
+
+/* ------------------------------------------------------------------ */
+/* FAQ block                                                          */
+/* ------------------------------------------------------------------ */
+
+function faqBlock() {
+	const faqBlock = document.querySelector('.faq-block');
+
+	if(!faqBlock) return;
+
+	faqBlock.querySelectorAll('.faq-block__item').forEach((item) => {
+		item.querySelector('.faq-block__item-title').addEventListener('click', () => {
+			item.classList.toggle('active')
+		})
 	})
 }
 
