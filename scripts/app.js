@@ -12,6 +12,7 @@ document.addEventListener('DOMContentLoaded', () => {
 	initScrollToTop();
 	initBurgerMenu();
 	headerPopup();
+	cookiePopup();
 });
 
 /* ------------------------------------------------------------------ */
@@ -302,6 +303,42 @@ function headerPopup() {
 	})
 
 	
+}
+
+/* ------------------------------------------------------------------ */
+/* Cookie popup                                                       */
+/* ------------------------------------------------------------------ */
+
+function cookiePopup() {
+	const cookieBlock = document.querySelector('.cookie-block');
+
+	if (!cookieBlock) return;
+
+	function getCookie(name) {
+		const matches = document.cookie.match(
+			new RegExp(
+				"(?:^|; )" + name.replace(/([.$?*|{}()[\]\\/+^])/g, "\\$1") + "=([^;]*)"
+			)
+		);
+
+		return matches ? decodeURIComponent(matches[1]) : undefined;
+	}
+
+	function setCookie(name, value, days) {
+		const date = new Date();
+		date.setTime(date.getTime() + days * 24 * 60 * 60 * 1000);
+
+		document.cookie = `${name}=${encodeURIComponent(value)}; expires=${date.toUTCString()}; path=/`;
+	}
+
+	if (!getCookie('cookieAccepted')) {
+		cookieBlock.classList.add('opened');
+	}
+
+	document.querySelector('.cookie-block__accept').addEventListener('click', function () {
+		cookieBlock.classList.remove('opened');
+		setCookie('cookieAccepted', '1', 365); 
+	});
 }
 
 /* ------------------------------------------------------------------ */
