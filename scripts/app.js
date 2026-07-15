@@ -15,6 +15,7 @@ document.addEventListener('DOMContentLoaded', () => {
 	cookiePopup();
 	tgButton();
 	faqBlock();
+	faqBlockMain();
 });
 
 /* ------------------------------------------------------------------ */
@@ -390,6 +391,22 @@ function faqBlock() {
 
 	faqBlock.querySelectorAll('.faq-block__item').forEach((item) => {
 		item.querySelector('.faq-block__item-title').addEventListener('click', () => {
+			item.classList.toggle('active')
+		})
+	})
+}
+
+/* ------------------------------------------------------------------ */
+/* FAQ block main                                                     */
+/* ------------------------------------------------------------------ */
+
+function faqBlockMain() {
+	const faqBlock = document.querySelector('.faq-block-main');
+
+	if(!faqBlock) return;
+
+	faqBlock.querySelectorAll('.faq-block-main__item').forEach((item) => {
+		item.querySelector('.faq-block-main__item-title').addEventListener('click', () => {
 			item.classList.toggle('active')
 		})
 	})
