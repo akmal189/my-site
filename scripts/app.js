@@ -16,6 +16,7 @@ document.addEventListener('DOMContentLoaded', () => {
 	tgButton();
 	faqBlock();
 	faqBlockMain();
+	siteAnimations();
 });
 
 /* ------------------------------------------------------------------ */
@@ -409,6 +410,99 @@ function faqBlockMain() {
 		item.querySelector('.faq-block-main__item-title').addEventListener('click', () => {
 			item.classList.toggle('active')
 		})
+	})
+}
+
+/* ------------------------------------------------------------------ */
+/* Animations                                                         */
+/* ------------------------------------------------------------------ */
+
+function siteAnimations() {
+	gsap.registerPlugin(ScrollTrigger);
+
+	const items2 = document.querySelectorAll('.portfolio-block__item, .services-block__item, .advantages-block__item, .work-steps__item, .faq-block-main__item, .form-block__left, .form-block__right, .feature-block__item, .faq-block__item');
+
+	const groups = new Map();
+	
+	items2.forEach((item) => {
+	    const parent = item.parentElement;
+	    if (!groups.has(parent)) {
+	        groups.set(parent, []);
+	    }
+	    groups.get(parent).push(item);
+	});
+	
+	const isMobile = window.innerWidth <= 768;
+	
+	
+	groups.forEach((groupItems) => {
+	    groupItems.forEach((item, index) => {
+	        gsap.fromTo(item,
+	            {
+	                opacity: 0,
+	                y: 30
+	            },
+	            {
+	                opacity: 1,
+	                y: 0,
+	                scrollTrigger: {
+	                    trigger: item.parentElement,
+	                    start: isMobile ? "top 110%" : "top 90%",
+	                },
+	                duration: 1,
+	                delay: index * 0.30
+	            }
+	        );
+	    });
+	});
+
+	let wordAnimate = document.querySelectorAll(".block-title"),
+		text,
+		wordSpan,
+		letterSpan;
+
+	wordAnimate.forEach((item) => {
+		text = item.textContent;
+		item.innerHTML = "";
+
+		// Разделите текст на слова и оберните каждое слово в <span> с классом "word"
+		text.split(" ").forEach(word => {
+			wordSpan = document.createElement("span");
+			wordSpan.classList.add("word");
+
+			// Разделите каждое слово на буквы и оберните каждую букву в <span>
+			word.split("").forEach(letter => {
+				letterSpan = document.createElement("span");
+				letterSpan.textContent = letter;
+				wordSpan.appendChild(letterSpan);
+			});
+
+			// Добавьте слово в контейнер
+			item.appendChild(wordSpan);
+			// Добавьте пробел между словами
+			item.appendChild(document.createTextNode(" "));
+		});
+
+		// Получите все span элементы с классом word
+		const letterSpans = item.querySelectorAll(".word span");
+
+		// Запустите анимацию
+		gsap.fromTo(letterSpans, {
+			opacity: 0,
+			y: 20, // Начальная позиция смещена вниз
+		}, {
+			duration: 1,
+			opacity: 1,
+			y: 0, // Конечная позиция
+			stagger: 0.05, // Задержка между анимациями букв
+			ease: "power1.out",
+			scrollTrigger: {
+				trigger: item,
+				start: 'top 80%',
+				end: 'bottom 20%',
+				toggleActions: 'play',
+			}
+		});
 	})
 }
 
