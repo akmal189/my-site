@@ -131,6 +131,13 @@
                                 </svg>
                             </a>
                         </div>
+                        <div class="site-header__messengers-item">
+                            <a href="javascript:void(0);" class="popup-btn" data-popup="login-popup">
+                                <svg class="svg-icon">
+                                    <use xlink:href="images/sprite.svg#user-icon"></use>
+                                </svg>
+                            </a>
+                        </div>
                     </div>
                 </div>
 
@@ -570,6 +577,65 @@
                     <div class="cookie-block__btns-item"><a href="javascript:void(0);" class="cookie-block__btn cookie-block__accept">Принять</a></div>
                     <div class="cookie-block__btns-item"><a href="cookie-policy.html" class="cookie-block__btn">Политика использования файлов cookie</a></div>
                 </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="popup-form-block" data-popup="login-popup" data-lenis-prevent>
+        <div class="popup-form-block__body">
+            <a href="javascript:void(0);" class="popup-form-block__closer">
+                <svg class="svg-icon">
+                    <use xlink:href="images/sprite.svg#close-icon"></use>
+                </svg>
+            </a>
+            <h2 class="form-block__title block-title">Войти</h2>
+            <div class="form-block__form" style="max-width: 500px;">
+                <form method="post">
+                    <div class="form-item">
+                        <div class="form-item__value">
+                            <input type="text" name="log" placeholder="Логин">
+                        </div>
+                    </div>
+
+                    <div class="form-item">
+                        <div class="form-item__value">
+                            <input type="password" name="pwd" placeholder="Пароль">
+                        </div>
+                    </div>
+
+                    <div class="form-item">
+                        <div class="form-item__value">
+                            <label>
+                                <input type="checkbox" name="remember">
+                                <span class="checkbox-item"></span>
+                                <span class="text">Запомнить меня</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="form-item item-submit">
+                        <div class="form-item__value">
+                            <button type="submit" name="login" class="primary-button-icon">
+                                <span class="text">Войти</span>
+                                <span class="icon">
+                                    <svg class="svg-icon">
+                                        <use xlink:href="images/sprite.svg#chevron-right"></use>
+                                    </svg>
+                                </span>
+                            </button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+
+            <div class="login-links">
+                <a class="register-btn" href="<?php echo esc_url(home_url('/register/')); ?>">
+                    Зарегистрироваться
+                </a>
+
+                <a class="forgot-btn" href="<?php echo esc_url(wp_lostpassword_url()); ?>">
+                    Забыли пароль?
+                </a>
             </div>
         </div>
     </div>
