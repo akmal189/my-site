@@ -639,6 +639,49 @@
             </div>
         </div>
     </div>
+
+    <div class="popup-form-block" data-popup="tariffs-popup" data-lenis-prevent>
+        <div class="popup-form-block__body">
+            <a href="javascript:void(0);" class="popup-form-block__closer">
+                <svg class="svg-icon">
+                    <use xlink:href="images/sprite.svg#close-icon"></use>
+                </svg>
+            </a>
+            <h2 class="form-block__title block-title">Подключить тариф</h2>
+            <div class="form-block__form" style="max-width: 500px;">
+                <form method="post">
+                    <div class="form-item">
+                        <div class="form-item__value">
+                            <select>
+                                <option value="Выберите тариф" selected disabled>Выберите тариф</option>
+                                <option value="Почасовая оплата">Почасовая оплата</option>
+                                <option value="Старт">Старт</option>
+                                <option value="Бизнес">Бизнес</option>
+                                <option value="PRO">PRO</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-item">
+                        <div class="form-item__value">
+                            <select>
+                                <option value="Выберите срок подключения" selected disabled>Выберите срок подключения</option>
+                                <option value="1 месяц">1 месяц</option>
+                                <option value="2 месяца">2 месяца</option>
+                                <option value="3 месяца">3 месяца</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-item item-submit">
+                        <div class="form-item__value">
+                            <button type="submit" name="login" class="primary-button">Подключить</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
     
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/lenis@1.3.25/dist/lenis.min.js"></script>
