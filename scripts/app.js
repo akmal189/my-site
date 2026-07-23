@@ -621,7 +621,7 @@ class SiteAnimations {
 		const items = document.querySelectorAll(
 			'.portfolio-block__item, .services-block__item, .advantages-block__item, ' +
 			'.work-steps__item, .faq-block-main__item, .form-block__left, .form-block__right, ' +
-			'.feature-block__item, .faq-block__item, .reviews-block__item'
+			'.feature-block__item, .faq-block__item, .reviews-block__item, .about-advantages__item'
 		);
 
 		const groups = new Map();
