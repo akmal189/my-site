@@ -99,7 +99,7 @@
                             <li><a href="services.html">Услуги</a></li>
                             <li><a href="#projects">Проекты</a></li>
                             <li><a href="#reviews">Отзывы</a></li>
-                            <li><a href="#about">О нас</a></li>
+                            <li><a href="about.html">О нас</a></li>
                             <li><a href="contacts.html">Контакты</a></li>
                         </ul>
                     </nav>
@@ -291,7 +291,7 @@
                         <div class="site-footer__menu-body">
                             <nav>
                                 <ul class="site-footer__site-menu">
-                                    <li><a href="#">О компании</a></li>
+                                    <li><a href="about.html">О компании</a></li>
                                     <li><a href="#">Клиентам</a></li>
                                     <li><a href="contacts.html">Контакты</a></li>
                                 </ul>
@@ -500,7 +500,7 @@
     <div class="tg-button-block">
         <div class="tg-button-block__inner">
             <div class="tg-button-block__message hidden">
-                Мы онлайн! напишите нам в Telegram.
+                Мы онлайн! Напишите нам в Telegram.
 
                 <div class="tg-button-block__closer">
                     <a href="javascript:void(0);">
@@ -583,11 +583,11 @@
             </div>
 
             <div class="login-links">
-                <a class="register-btn" href="<?php echo esc_url(home_url('/register/')); ?>">
+                <a class="register-btn border-button" href="<?php echo esc_url(home_url('/register/')); ?>">
                     Зарегистрироваться
                 </a>
 
-                <a class="forgot-btn" href="<?php echo esc_url(wp_lostpassword_url()); ?>">
+                <a class="forgot-btn primary-button" href="<?php echo esc_url(wp_lostpassword_url()); ?>">
                     Забыли пароль?
                 </a>
             </div>
@@ -604,6 +604,18 @@
             <h2 class="form-block__title block-title">Подключить тариф</h2>
             <div class="form-block__form" style="max-width: 500px;">
                 <form method="post">
+                    <div class="form-item">
+                        <div class="form-item__value">
+                            <input type="text" placeholder="Имя">
+                        </div>
+                    </div>
+
+                    <div class="form-item">
+                        <div class="form-item__value">
+                            <input type="text" placeholder="E-mail *" required>
+                        </div>
+                    </div>
+
                     <div class="form-item">
                         <div class="form-item__value">
                             <select>
