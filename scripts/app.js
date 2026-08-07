@@ -19,6 +19,7 @@ class App {
 			new FaqBlockMain(),
 			new SiteAnimations(),
 			new ReviewsSlider(),
+			new ExitPopup(),
 		];
 
 		this.modules.forEach(module => module.init());
@@ -705,6 +706,45 @@ class SiteAnimations {
 		if (typeof ScrollTrigger !== 'undefined') {
 			ScrollTrigger.getAll().forEach(trigger => trigger.kill());
 		}
+	}
+}
+
+/* ------------------------------------------------------------------ */
+/* Exit popup                                                         */
+/* ------------------------------------------------------------------ */
+
+class ExitPopup {
+	constructor() {
+		this.popup = document.querySelector('.exit-popup-block');
+		this.popupCloser = document.querySelector('.exit-popup-block__closer a');
+	}
+
+	init() {
+		this.setupEventListeners();
+	}
+
+	setupEventListeners() {
+		this.popupCloser.addEventListener('click', () => this.closeMenu());
+
+		document.addEventListener('mouseout', function (e) {
+		    // Если уже показывали в этой сессии — выходим
+		    if (sessionStorage.getItem('exitPopupShown')) return;
+		
+		    // Курсор ушёл за верхнюю границу окна
+		    if (e.clientY <= 0 && !e.relatedTarget && !e.toElement) {
+		        const popup = document.querySelector('.exit-popup-block');
+		
+		        if (popup) {
+		            popup.classList.add('opened');
+		            sessionStorage.setItem('exitPopupShown', 'true');
+		        }
+		    }
+		});
+	}
+
+	closeMenu(e) {
+		this.popup.classList.remove('opened');
+		document.documentElement.classList.remove('overflow_hidden');
 	}
 }
 
